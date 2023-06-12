@@ -5,23 +5,21 @@ let searchBtn = document.getElementById("search-btn");
 let cityRef = document.getElementById("city");
 
 let getWeather = () => {
-  let cityValue = cityRef.value;
+let cityValue = cityRef.value;
 
+  
 cityRef.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
-        event.preventDefault();
-    getWeather();
-}
-});
-  
-  
+      event.preventDefault();
+      getWeather();
+    }
+  });
+
   if (cityValue.length == 0) {
     result.innerHTML = `<h3 class="msg">Please enter a city name</h3>`;
-  }
-  
-  else {
+  } else {
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${key}&units=metric`;
-    
+
     cityRef.value = "";
     fetch(url)
       .then((resp) => resp.json())
